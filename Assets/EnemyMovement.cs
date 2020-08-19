@@ -9,7 +9,8 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField] float time_to_hop=1f;
 	void Start () 
     {
-
+        path = FindObjectOfType<Pathfinder>().return_path();
+        StartCoroutine(FollowPath());
 	}
 
     IEnumerator FollowPath()

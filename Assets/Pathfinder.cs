@@ -12,14 +12,34 @@ public class Pathfinder : MonoBehaviour {
     Vector2Int[] directions = {Vector2Int.up, Vector2Int.right,Vector2Int.down,Vector2Int.left};
     bool is_algorithim_running = true;
     Waypoint search_center;
-	void Start ()
+    public List<Waypoint> path = new List<Waypoint>();
+	public List<Waypoint> return_path ()
     {
-        LoadBlocks();
-        color_change();
-        Pathfind();
+        if (path.Count()==0)
+        {
+            LoadBlocks();
+            color_change();
+            BFS_Algo();
+            path_creator();
+        }
+        return path;
+
     }
 
-    private void Pathfind()
+    private void path_creator()
+    {
+        path.Add(end_block);
+        Waypoint previous = end_block.explored_from;
+        while (previous != start_block)
+        {
+            path.Add(previous);
+            previous = previous.explored_from;
+        }
+        path.Add(start_block);
+        path.Reverse();
+    }
+
+    private void BFS_Algo()
     {
         queue.Enqueue(start_block);
         while (queue.Count > 0 && is_algorithim_running)
@@ -35,7 +55,6 @@ public class Pathfinder : MonoBehaviour {
     {
         if (search_center == end_block)
         {
-            print("Found the end block at"+end_block);
             is_algorithim_running = false;
         }
     }

@@ -33,6 +33,6 @@ public class CubeEditor : MonoBehaviour {
         int gridSize = waypoint.GetGridSize();
         string labelText =waypoint.GetGridPos().x+","+waypoint.GetGridPos().y;
         Label.text = labelText;
-        gameObject.name = "Cube(" + labelText + ")";
+        gameObject.name = "(" + labelText + ")";
     }
 }
