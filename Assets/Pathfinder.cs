@@ -18,7 +18,6 @@ public class Pathfinder : MonoBehaviour {
         if (path.Count()==0)
         {
             LoadBlocks();
-            color_change();
             BFS_Algo();
             path_creator();
         }
@@ -28,15 +27,22 @@ public class Pathfinder : MonoBehaviour {
 
     private void path_creator()
     {
-        path.Add(end_block);
+        Add_path(end_block);
+        end_block.is_placeble = false;
         Waypoint previous = end_block.explored_from;
         while (previous != start_block)
         {
-            path.Add(previous);
+            Add_path(previous);
             previous = previous.explored_from;
         }
-        path.Add(start_block);
+        Add_path(start_block);
         path.Reverse();
+    }
+
+    private void Add_path(Waypoint previous)
+    {
+        path.Add(previous);
+        previous.is_placeble = false;
     }
 
     private void BFS_Algo()
@@ -72,19 +78,12 @@ public class Pathfinder : MonoBehaviour {
     private void get_neighbour_pos(Vector2Int direction)
     {
         Vector2Int explore_pos = direction + search_center.GetGridPos();
-        if (grid.ContainsKey(explore_pos) && !grid[explore_pos].is_explored && queue.Contains(grid[explore_pos]) == false)
+        if (grid.ContainsKey(explore_pos) && !grid[explore_pos].is_explored && queue.Contains(grid[explore_pos]) == false && grid[explore_pos].can_be_path)
         {
             queue.Enqueue(grid[explore_pos]);
             grid[explore_pos].explored_from=search_center;
         }
     }
-
-    public void color_change()
-    {
-        start_block.set_color(Color.red);
-        end_block.set_color(Color.green);
-    }
-
     private void LoadBlocks()
     {
         var waypoints = FindObjectsOfType<Waypoint>();

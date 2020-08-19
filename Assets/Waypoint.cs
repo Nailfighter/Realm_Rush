@@ -8,6 +8,8 @@ public class Waypoint : MonoBehaviour
     const int gridSize = 10;
     public bool is_explored = false;
     public Waypoint explored_from;
+    public bool is_placeble=true;
+    public bool can_be_path;
     public int GetGridSize()
     {
         return gridSize;
