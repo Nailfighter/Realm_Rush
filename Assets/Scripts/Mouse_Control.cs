@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Mouse_Control : MonoBehaviour
 {
-    [SerializeField] Tower_Behavior tower;
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
@@ -19,10 +18,8 @@ public class Mouse_Control : MonoBehaviour
        bool is_placeable=gameObject.GetComponent<Waypoint>().is_placeble;
         if (is_placeable)
         {
-            print(transform.position);
-            Instantiate(tower, transform.position, Quaternion.identity);
-            gameObject.GetComponent<Waypoint>().is_placeble=false;
-;       }
+            FindObjectOfType<Tower_Factory>().Add_Tower(gameObject.GetComponent<Waypoint>());     
+        }
         else
         {
             print("No,you can't place");

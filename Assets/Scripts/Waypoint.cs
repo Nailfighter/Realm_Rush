@@ -10,6 +10,7 @@ public class Waypoint : MonoBehaviour
     public Waypoint explored_from;
     public bool is_placeble=true;
     public bool can_be_path;
+
     public int GetGridSize()
     {
         return gridSize;
@@ -19,10 +20,5 @@ public class Waypoint : MonoBehaviour
     {
         return new Vector2Int( Mathf.RoundToInt(transform.position.x / gridSize),
                                Mathf.RoundToInt(transform.position.z / gridSize));
-    }
-    public void set_color(Color color)
-    {
-        MeshRenderer top_mesh = transform.Find("Top").GetComponent<MeshRenderer>();
-        top_mesh.material.color = color;
     }
 }

@@ -9,6 +9,7 @@ public class Tower_Behavior : MonoBehaviour
     public Transform Target_enemy;
     [SerializeField] ParticleSystem bullet;
     [SerializeField] float attack_range;
+    public Waypoint base_waypoint;
     void Update()
     {
         check_for_closest();

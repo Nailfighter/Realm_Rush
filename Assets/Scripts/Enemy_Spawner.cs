@@ -12,10 +12,10 @@ public class Enemy_Spawner : MonoBehaviour
     }
     IEnumerator spawn_enemy()
     {
-        while (1 == 1)
+        while (true)
         {
-            Instantiate(enemy.gameObject, transform.position, Quaternion.identity);
-            print("Spawning");
+            var ennemy=Instantiate(enemy.gameObject, transform.position, Quaternion.identity);
+            ennemy.transform.parent = transform;
             yield return new WaitForSeconds(spawn_time);
         }
     }

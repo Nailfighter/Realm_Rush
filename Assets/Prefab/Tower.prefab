@@ -3783,7 +3783,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 1000
     maxKillSpeed: 10000
     radiusScale: 1
     collidesWith:
@@ -4837,7 +4837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6355003070362969520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 70, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6946196529244227717}
@@ -4860,6 +4860,7 @@ MonoBehaviour:
   Target_enemy: {fileID: 0}
   bullet: {fileID: 2110428224867783519}
   attack_range: 20
+  base_waypoint: {fileID: 0}
 --- !u!1001 &6374328086955650404
 PrefabInstance:
   m_ObjectHideFlags: 0
