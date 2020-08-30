@@ -6,10 +6,11 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
     [SerializeField] List<Waypoint> path;
-    [SerializeField] float time_to_hop=1f;
+    public float time_to_hop=1f; // wave setter
     [SerializeField] ParticleSystem goal_particle;
 	void Start () 
     {
+        time_to_hop = FindObjectOfType<Wave_Setter>().time_to_hope();
         path = FindObjectOfType<Pathfinder>().return_path();
         StartCoroutine(FollowPath());
 	}

@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class Tower_Factory : MonoBehaviour
 {
-    [SerializeField] Tower_Behavior tower;
+    public Tower_Behavior tower;
     [SerializeField] int Max_Tower=5;
     Queue<Tower_Behavior> Tower_Q = new Queue<Tower_Behavior>();
     [SerializeField] Transform Tower_parent;
+    public bool is_2_tower;
     public void Add_Tower(Waypoint waypoint)
     {
         if (Tower_Q.Count()<Max_Tower)
         {
             Instantiate_Tower(waypoint);
-            print(Tower_Q.Count);
         }
         else
         {
@@ -43,10 +43,34 @@ public class Tower_Factory : MonoBehaviour
 
         old_tower.base_waypoint = new_waypoint;
 
+        //descide what tower type need
 
-        old_tower.transform.position = new_waypoint.transform.position;
-
-        Tower_Q.Enqueue(old_tower);
+        if (is_2_tower)
+        {
+            var new_tower_2 = Instantiate(tower, old_tower.base_waypoint.transform.position, Quaternion.identity);
+            new_tower_2.transform.parent = Tower_parent;
+            new_tower_2.base_waypoint = old_tower.base_waypoint;
+            Destroy(old_tower.gameObject);
+            Tower_Q.Enqueue(new_tower_2);
+            return;
+        }
+        
+        else 
+        {
+            var new_tower_1 = Instantiate(tower, old_tower.base_waypoint.transform.position, Quaternion.identity);
+            new_tower_1.transform.parent = Tower_parent;
+            new_tower_1.base_waypoint = old_tower.base_waypoint;
+            Destroy(old_tower.gameObject);
+            Tower_Q.Enqueue(new_tower_1);
+            return;
+        }
+    }
+    void limit_change_tower()
+    {
+        if (Tower_Q.Count == Max_Tower)
+        {
+            var old_tower = Tower_Q.Dequeue();
+        }
     }
 
 

@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Mouse_Control : MonoBehaviour
 {
+    public bool is_control=true;
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& is_control)
         {
             chech_if_placeable();
         }
@@ -22,7 +23,7 @@ public class Mouse_Control : MonoBehaviour
         }
         else
         {
-            print("No,you can't place");
+            FindObjectOfType<TypeWriterEffect>().type_message_box("You can't place the block there");
         }
     }
 }
