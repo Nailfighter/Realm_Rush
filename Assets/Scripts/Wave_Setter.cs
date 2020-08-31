@@ -23,8 +23,14 @@ public class Wave_Setter : MonoBehaviour
     [SerializeField] Text wave_counter;
 
     [Space][Header("Inisitialisation")]
-    [SerializeField] int healht=1;
+    [SerializeField] int Health=1;
     [SerializeField] float hop_time=1f;
+
+    [Space]
+    [Header("Inisitialisation")]
+    [SerializeField] float min_spawn_time=3f;
+    [SerializeField] float min_time_to_hop=3f;
+    [SerializeField] int max_hit_life=5;
     public float time_clock()
     {
         time += Time.deltaTime;
@@ -34,7 +40,7 @@ public class Wave_Setter : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<Enemy_Spawner>().spawn_time += dec_spawn;
-        healht -= inc_hit;
+        Health -= inc_hit;
         hop_time += red_time_to_hop;
         StartCoroutine(wave());
     }
@@ -44,15 +50,30 @@ public class Wave_Setter : MonoBehaviour
         {
             count++;
 
-            FindObjectOfType<Enemy_Spawner>().enabled = true;
-            FindObjectOfType<Enemy_Spawner>().spawn_time-=dec_spawn;
+            // Spawner()
+            if (FindObjectOfType<Enemy_Spawner>().spawn_time>=min_spawn_time)
+            {
+                FindObjectOfType<Enemy_Spawner>().enabled = true;
+                FindObjectOfType<Enemy_Spawner>().spawn_time -= dec_spawn;
+            }
+
+            // Wave Count Display
             wave_counter.text = "Wave " + count;
             StartCoroutine(FindObjectOfType<TypeWriterEffect>().Wave_Info());
 
-            healht += inc_hit;
+            // Health()
+            if (Health<=max_hit_life)
+            {
+                Health += inc_hit;
+            }
 
-            hop_time -= red_time_to_hop;
+            // Hoping()
+            if (hop_time>=min_time_to_hop)
+            {
+                hop_time -= red_time_to_hop;
+            }
 
+            // Time to wait
             yield return new WaitForSeconds(duration_of_wave);
             FindObjectOfType<Enemy_Spawner>().enabled = false;
             yield return new WaitForSeconds(wave_delay);
@@ -61,12 +82,10 @@ public class Wave_Setter : MonoBehaviour
 
     public int wave_health()
     {
-
-        return healht;
+        return Health;
     }
     public float time_to_hope()
     {
-
         return hop_time;
     }
 

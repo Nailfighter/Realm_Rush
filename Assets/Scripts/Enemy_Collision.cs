@@ -18,11 +18,9 @@ public class Enemy_Collision : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        print(other.GetComponentInParent<Tower_Behavior>().gameObject.name );
-        check_if_dead();
-
+        check_if_dead((other.GetComponentInParent<Tower_Behavior>().gameObject.name));
     }
-    void check_if_dead()
+    void check_if_dead(string Tower_name)
     {
         if (hit_life <= 0)
         {
@@ -30,7 +28,7 @@ public class Enemy_Collision : MonoBehaviour
         }
         else
         {
-            hit();
+            hit(Tower_name);
         }
     }
 
@@ -43,10 +41,19 @@ public class Enemy_Collision : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void hit()
+    private void hit(string Tower_name)
     {
-        hit_life--;
-        FindObjectOfType<Score>().score_change(1);
+        print(Tower_name);
+        if (Tower_name == "Slow_Tower(Clone)")
+        {
+            hit_life = hit_life - 3;
+            FindObjectOfType<Score>().score_change(3);
+        }
+        else
+        {
+            hit_life--;
+            FindObjectOfType<Score>().score_change(1);
+        }
         main_sorce.PlayOneShot(shot_sfx);
         Hit_particle.Play();
     }
