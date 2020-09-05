@@ -4,10 +4,11 @@ using UnityEngine.UI;
 
 public class TypeWriterEffect : MonoBehaviour {
 
+    public GameObject wave_display;
 	public float delay = 0.1f;
 	private string currentText = "";
-	bool is_typing;
-	[SerializeField] string[] good_luck;
+    string random_wish;
+    bool is_typing;
 	[SerializeField] float wish_time;
     bool is_couritne;
 	// Use this for initialization
@@ -17,11 +18,6 @@ public class TypeWriterEffect : MonoBehaviour {
 	}
     private void Start()
     {
-        if (good_luck.Length != FindObjectOfType<Wave_Setter>().num_of_wave)
-        {
-            Debug.LogError("Not enoug string");
-            Debug.Break();
-        }
         is_couritne = false;
 		StartCoroutine(Wave_Info());
     }
@@ -47,12 +43,12 @@ public class TypeWriterEffect : MonoBehaviour {
 
    public  IEnumerator Wave_Info()
     {
-		string random_wish = good_luck[FindObjectOfType<Wave_Setter>().count];
+        random_wish = "Wave-" + FindObjectOfType<Wave_Setter>().count;
 		for (int i = 0; i <= random_wish.Length; i++)
 		{
 			currentText =random_wish.Substring(0, i);
-			gameObject.GetComponentInChildren<Text>().text = currentText;
-			yield return new WaitForSeconds(delay);
+			wave_display.GetComponentInChildren<Text>().text = currentText;
+			yield return new WaitForSeconds(delay*5);
 		}
 
     }

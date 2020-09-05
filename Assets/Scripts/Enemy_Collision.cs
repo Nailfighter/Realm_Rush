@@ -43,7 +43,6 @@ public class Enemy_Collision : MonoBehaviour
 
     private void hit(string Tower_name)
     {
-        print(Tower_name);
         if (Tower_name == "Slow_Tower(Clone)")
         {
             hit_life = hit_life - 3;

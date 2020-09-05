@@ -8,6 +8,12 @@ public class Cam_Man : MonoBehaviour
     [SerializeField] GameObject Cam_2;
     [SerializeField] GameObject Health;
     [SerializeField] GameObject Player_UI;
+    [SerializeField] Quaternion origninal_rot;
+
+    private void Start()
+    {
+        origninal_rot = Health.transform.rotation;
+    }
 
     public void Update()
     {
@@ -29,7 +35,7 @@ public class Cam_Man : MonoBehaviour
     {
         if(Camera.main.name== "Up_Cam")
         {
-            Health.transform.rotation = Quaternion.Euler(-50, 180, 0);
+            Health.transform.rotation = origninal_rot;
             return;
         }
 

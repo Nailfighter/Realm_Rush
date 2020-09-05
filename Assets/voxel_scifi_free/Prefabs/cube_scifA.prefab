@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23133127351168778}
   - component: {fileID: 95438386254077222}
   - component: {fileID: 65244416297966686}
+  - component: {fileID: 6643274773080854145}
   m_Layer: 0
   m_Name: cube_scifA
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8015dc356ece84c49878d380c0f403e8, type: 2}
+  - {fileID: 2100000, guid: deb927aa2d68d734aa5f7066c70ace02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,3 +116,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9000006, z: 0.9000004}
   m_Center: {x: 0, y: 0, z: 0.45000002}
+--- !u!114 &6643274773080854145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915620986865270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e4f703f3db8394db125bc5a6156188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color_time: 10
+  wait: 0.01
+  RGB_Block: {fileID: 2100000, guid: deb927aa2d68d734aa5f7066c70ace02, type: 2}

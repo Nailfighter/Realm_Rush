@@ -8,7 +8,7 @@ public class Player_Base : MonoBehaviour
     [SerializeField] int Player_Life = 20;
     [SerializeField] AudioSource main_sorce;
     [SerializeField] AudioClip blsat_sfx;
-    [SerializeField] GameObject player_ui;
+    public GameObject player_ui;
     [SerializeField] GameObject death_ui;
     [SerializeField] float time_less;
 
