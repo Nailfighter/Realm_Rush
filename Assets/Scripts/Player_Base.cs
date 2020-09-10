@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player_Base : MonoBehaviour
 {
@@ -26,6 +29,7 @@ public class Player_Base : MonoBehaviour
             {
                 mouse.is_control = false;
             }
+            FindObjectOfType<Score>().score_modifier(SceneManager.GetActiveScene().buildIndex, FindObjectOfType<Score>().cur_score);
 
         }
         else
@@ -40,6 +44,10 @@ public class Player_Base : MonoBehaviour
     private void Time_Stop()
     {
         Time.timeScale = 0f;
+    }
+    private void Start()
+    {
+        FindObjectOfType<Health_Bar_Slider>().gameObject.GetComponent<Slider>().maxValue = Player_Life;
     }
     void animation_stop()
     {

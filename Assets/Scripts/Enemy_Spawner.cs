@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class Enemy_Spawner : MonoBehaviour
 {
@@ -21,10 +23,10 @@ public class Enemy_Spawner : MonoBehaviour
     IEnumerator spawn_enemy()
     {
         int count_wave = 0;
-        while (count_wave<=FindObjectOfType<Wave_Setter>().num_of_wave)
+        while (count_wave<FindObjectOfType<Wave_Setter>().num_of_wave)
         {
             int count = 0;
-            while (count <= FindObjectOfType<Wave_Setter>().spwan_at_wave)
+            while (count < FindObjectOfType<Wave_Setter>().spwan_at_wave)
             {
                 var ennemy = Instantiate(enemy.gameObject, transform.position, Quaternion.identity);
                 ennemy.transform.parent = transform;
@@ -40,6 +42,7 @@ public class Enemy_Spawner : MonoBehaviour
     {
         if (FindObjectsOfType<Enemy_Collision>().Count()==0 && Wave_over)
         {
+            FindObjectOfType<Score>().score_modifier(SceneManager.GetActiveScene().buildIndex, FindObjectOfType<Score>().cur_score);
             GameObject level_win = FindObjectOfType<Wave_Setter>().level_win_screen;
             level_win.SetActive(true);
             FindObjectOfType<Player_Base>().player_ui.SetActive(false);
@@ -49,4 +52,6 @@ public class Enemy_Spawner : MonoBehaviour
         }
 
     }
+
+
 }

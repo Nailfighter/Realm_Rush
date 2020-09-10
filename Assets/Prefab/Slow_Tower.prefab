@@ -25,11 +25,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089859108618382733}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.083, y: -0.020770848, z: 0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.6714287, y: 0.07318459, z: 0.004286085}
+  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1.4285715}
   m_Children: []
-  m_Father: {fileID: 8085210078438705963}
+  m_Father: {fileID: 5815995807090382561}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!198 &190917030834092742
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.45
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4837,11 +4837,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5020474568471961774}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.083, y: -0.072, z: 0.488474}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.354963, y: 0, z: 0.004285659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8085210078438705963}
+  m_Father: {fileID: 5815995807090382561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!198 &1905149061793338967
@@ -5677,7 +5677,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.45
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9651,8 +9651,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.507, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2145775349675251759}
-  - {fileID: 5294264168034985574}
   - {fileID: 5815995807090382561}
   m_Father: {fileID: 91601935100959170}
   m_RootOrder: 0
@@ -9788,7 +9786,7 @@ MonoBehaviour:
   - {fileID: 1905149061793338967}
   - {fileID: 190917030834092742}
   - {fileID: 3311037650111497331}
-  attack_range: 20
+  attack_range: 50
   base_waypoint: {fileID: 0}
   rot: {fileID: 5815995807726785383}
   hit_ratio: 1
@@ -9820,9 +9818,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.08, y: -0.072, z: -0.46}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_Children: []
+  m_Children:
+  - {fileID: 2145775349675251759}
+  - {fileID: 5294264168034985574}
   m_Father: {fileID: 8085210078438705963}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!198 &3311037650111497331
 ParticleSystem:
@@ -10657,7 +10657,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.45
       minScalar: 10
       maxCurve:
         serializedVersion: 2

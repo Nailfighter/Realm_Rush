@@ -52,17 +52,23 @@ public class Snap_Environment : MonoBehaviour
     {
         while (true)
         {
-            float red;
-            float green;
-            float blue;
-            red = Random.Range(56, 200);
-            green = Random.Range(56, 200);
-            blue = Random.Range(56, 200);
-            color = new Color(red / 255, green / 255, blue / 255);
+            color = random_color_gen();
             RGB_Block.SetColor("_EmissionColor", color);
             yield return new WaitForSeconds(color_time);
         }
 
+    }
+    
+    public Color random_color_gen()
+    {
+        float red;
+        float green;
+        float blue;
+        red = Random.Range(56, 200);
+        green = Random.Range(56, 200);
+        blue = Random.Range(56, 200);
+        Color r_color = new Color(red / 255, green / 255, blue / 255);
+        return r_color;
     }
 
    

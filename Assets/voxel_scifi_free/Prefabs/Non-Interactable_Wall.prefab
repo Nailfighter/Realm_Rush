@@ -128,3 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e4f703f3db8394db125bc5a6156188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0.25882354, g: 0.62352943, b: 0.6862745, a: 1}
+  is_random_y: 0
+  color_time: 0
+  wait: 1
+  RGB_Block: {fileID: 0}

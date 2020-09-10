@@ -5,7 +5,8 @@ using System;
 [RequireComponent(typeof(Camera_Shake))]
 public class Camera_MOV : MonoBehaviour
 {
-
+    [Header("Rot rest")]
+    [SerializeField] float u_rot_lim, d_rot_lim;
     public float mainSpeed = 100.0f; //regular speed
     float shiftAdd = 250.0f; //multiplied by how long shift is held.  Basically running
     float maxShift = 1000.0f; //Maximum speed when holdin gshift
@@ -20,7 +21,6 @@ public class Camera_MOV : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.CapsLock))
         {
             is_mov = !is_mov;
-            print(is_mov);
         }
         if (!is_mov) { return;}
         if (Input.GetMouseButton(1))
@@ -50,8 +50,12 @@ public class Camera_MOV : MonoBehaviour
         lastMouse = Input.mousePosition - lastMouse;
         lastMouse = new Vector3(-lastMouse.y * camSens, 0, 0);
         lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x, 0, 0);
-        transform.eulerAngles = lastMouse;
-        lastMouse = Input.mousePosition;
+        float clamp_x = Mathf.Clamp(lastMouse.x,u_rot_lim,d_rot_lim);
+        float clamp_y = lastMouse.y;
+        float clamp_z = lastMouse.z;
+        transform.eulerAngles = new Vector3(clamp_x,clamp_y,clamp_z);
+
+
     }
 
     private Vector3 GetBaseInput()
