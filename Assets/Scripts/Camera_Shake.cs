@@ -4,7 +4,7 @@ using System.Collections;
 public class Camera_Shake : MonoBehaviour
 {
     public float duration, magnitude;
-
+    public High_Score_Data data;
 
     public void Update()
     {
@@ -30,5 +30,11 @@ public class Camera_Shake : MonoBehaviour
         transform.position = orignalPosition;
     }
 
-
+    public void score_modifier(int level, int score)
+    {
+        if (score > data.score[level])
+        {
+            data.score[level] = score;
+        }
+    }
 }

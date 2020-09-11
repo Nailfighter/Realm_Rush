@@ -14,6 +14,7 @@ public class Player_Base : MonoBehaviour
     public GameObject player_ui;
     [SerializeField] GameObject death_ui;
     [SerializeField] float time_less;
+    [SerializeField]Text name;
 
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +30,7 @@ public class Player_Base : MonoBehaviour
             {
                 mouse.is_control = false;
             }
-            FindObjectOfType<Score>().score_modifier(SceneManager.GetActiveScene().buildIndex, FindObjectOfType<Score>().cur_score);
+            FindObjectOfType<Camera_Shake>().score_modifier(SceneManager.GetActiveScene().buildIndex, int.Parse(name.text));
 
         }
         else

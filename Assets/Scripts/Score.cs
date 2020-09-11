@@ -6,7 +6,7 @@ namespace Assets.Scripts
 {
     public class Score : MonoBehaviour
     {
-        public High_Score_Data data;
+
         [SerializeField] Text[] Score_text;
         [SerializeField] int combo=1;
         public int cur_score;
@@ -26,12 +26,6 @@ namespace Assets.Scripts
             Score_text[0].text = cur_score.ToString();
             Score_text[1].text = cur_score.ToString();
         }
-    public void score_modifier(int level, int score)
-    {
-        if (score > data.score[level])
-        {
-            data.score[level] = score;
-        }
-    }
+    
     }
 }

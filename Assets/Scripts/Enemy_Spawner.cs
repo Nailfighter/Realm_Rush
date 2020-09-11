@@ -5,12 +5,14 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Enemy_Spawner : MonoBehaviour
 {
     public float spawn_time=2f; //wave setter
     [SerializeField] EnemyMovement enemy;
     bool Wave_over=false;
+    [SerializeField] Text name;
     private void Awake()
     {
         StartCoroutine(spawn_enemy());
@@ -42,7 +44,7 @@ public class Enemy_Spawner : MonoBehaviour
     {
         if (FindObjectsOfType<Enemy_Collision>().Count()==0 && Wave_over)
         {
-            FindObjectOfType<Score>().score_modifier(SceneManager.GetActiveScene().buildIndex, FindObjectOfType<Score>().cur_score);
+            FindObjectOfType<Camera_Shake>().score_modifier(SceneManager.GetActiveScene().buildIndex,int.Parse(name.text));
             GameObject level_win = FindObjectOfType<Wave_Setter>().level_win_screen;
             level_win.SetActive(true);
             FindObjectOfType<Player_Base>().player_ui.SetActive(false);
