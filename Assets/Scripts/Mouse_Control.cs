@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Mouse_Control : MonoBehaviour
@@ -23,7 +24,11 @@ public class Mouse_Control : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<TypeWriterEffect>().type_message_box("You can't place the block there");
+            if (FindObjectsOfType<TypeWriterEffect>().Count() != 0)
+            {
+                FindObjectOfType<TypeWriterEffect>().type_message_box("You can't place the block there");
+            }
+
         }
     }
 }

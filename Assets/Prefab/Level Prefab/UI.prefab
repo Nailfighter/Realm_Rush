@@ -1818,6 +1818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ee9174161de9c4bab7fa7fabb4af40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reset_text: {fileID: 0}
+  data: {fileID: 11400000, guid: b30e0fcbc0285b348b4f8506d07d24fb, type: 2}
   sample_block: {fileID: 0}
 --- !u!1 &2931063252441945653
 GameObject:
@@ -3002,7 +3004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2d0693f21b614b8354214f0ccc409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: b30e0fcbc0285b348b4f8506d07d24fb, type: 2}
   Score_text:
   - {fileID: 2931063252441945655}
   - {fileID: 2141524332651440069}

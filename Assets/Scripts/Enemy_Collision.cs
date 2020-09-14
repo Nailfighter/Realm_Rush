@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy_Collision : MonoBehaviour
@@ -51,7 +52,11 @@ public class Enemy_Collision : MonoBehaviour
         else
         {
             hit_life--;
-            FindObjectOfType<Score>().score_change(1);
+            if (FindObjectsOfType<Score>().Count() != 0)
+            {
+                FindObjectOfType<Score>().score_change(1);
+            }
+
         }
         main_sorce.PlayOneShot(shot_sfx);
         Hit_particle.Play();

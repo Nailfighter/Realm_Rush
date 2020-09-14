@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +45,11 @@ public class Wave_Setter : MonoBehaviour
             hop_time = Random.Range(min_time_to_hop, max_time_to_hop);
 
             wave_counter.text = "Wave " + count;
-            StartCoroutine(FindObjectOfType<TypeWriterEffect>().Wave_Info());
+            if (FindObjectsOfType<TypeWriterEffect>().Count() != 0)
+            {
+                StartCoroutine(FindObjectOfType<TypeWriterEffect>().Wave_Info());
+            }
+
 
             yield return new WaitForSeconds(duration_of_wave);
         }
