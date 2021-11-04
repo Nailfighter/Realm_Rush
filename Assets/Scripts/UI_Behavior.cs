@@ -4,12 +4,29 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class UI_Behavior : MonoBehaviour
 {
     public GameObject reset_text;
     public High_Score_Data data;
     public GameObject sample_block;
+    public Toggle Graphic_Toggle;
+
+    private GameObject Pos_Process;
+    private void Awake()
+    {
+        Pos_Process = FindObjectOfType<PostProcessVolume>().gameObject;
+    }
+    private void Start()
+    {
+        if(Graphic_Toggle != null)
+        {
+            Graphic_Toggle.isOn = data.Fancy_Graphics;
+        }
+
+        Change_Quality();
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -66,4 +83,20 @@ public class UI_Behavior : MonoBehaviour
         yield return new WaitForSeconds(3f);
         reset_text.SetActive(false);
     }
+
+    private void Change_Quality()
+    {
+        foreach (var mov_cube in FindObjectsOfType<Snap_Environment>())
+        {
+            mov_cube.enabled = data.Fancy_Graphics;
+        }
+        Pos_Process.SetActive(data.Fancy_Graphics);
+    }
+    public void toggle_fancy_graphic(bool state)
+    {
+        data.Fancy_Graphics = state;
+        Change_Quality();
+    }
+
+
 }

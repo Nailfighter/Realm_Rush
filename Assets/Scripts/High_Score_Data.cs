@@ -6,4 +6,5 @@ using UnityEngine;
 public class High_Score_Data : ScriptableObject
 {
     public int[] score=new int[8];
+    public bool Fancy_Graphics = false;
 }
